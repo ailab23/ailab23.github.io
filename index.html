@@ -366,5 +366,19 @@ for i in tokenized:
   <button onclick="copyToClipboard(document.getElementById('textbox9'))">Copy</button>
     <br>
   </div>
+	
+  <!------------------------------------------------------ -->
+  <div>
+        <P><<h2>lemmatization</h2>
+  <textarea id="textbox10" rows="25" cols="100">
+from nltk.stem import WordNetLemmatizer
+lemmatizer = WordNetLemmatizer()
+print("rocks :", lemmatizer.lemmatize("rocks"))
+print("corpora :", lemmatizer.lemmatize("corpora"))
+print("better :", lemmatizer.lemmatize("better", pos ="a") 
+  </textarea>
+  <button onclick="copyToClipboard(document.getElementById('textbox10'))">Copy</button>
+    <br>
+  </div>
 </body>
 </html>
