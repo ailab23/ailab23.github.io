@@ -301,5 +301,70 @@ if __name__=="__main__":
   <button onclick="copyToClipboard(document.getElementById('textbox6'))">Copy</button>
     <br>
   </div>
+	
+  <!------------------------------------------------------ -->
+  <div>
+        <P><<h2>remove stopwords</h2>
+  <textarea id="textbox7" rows="25" cols="100">
+import nltk
+nltk.download('punkt')
+nltk.download('stopwords')
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+text="How to remove stop words with NLTK library in Python"
+print("Text:",text)
+tokens=word_tokenize(text.lower())
+print("Tokens:",tokens)
+english_stopwords=stopwords.words('english')
+tokens_wo_stopwords=[t for t in tokens if t not in english_stopwords]
+print("Text without stop words:","".join(tokens_wo_stopwords)) 
+  </textarea>
+  <button onclick="copyToClipboard(document.getElementById('textbox7'))">Copy</button>
+    <br>
+  </div>
+	
+  <!------------------------------------------------------ -->
+  <div>
+        <P><<h2>stemming words from sentences</h2>
+  <textarea id="textbox8" rows="25" cols="100">
+from nltk.stem import PorterStemmer
+from nltk.tokenize import word_tokenize
+ps=PorterStemmer()
+sentence="Programmers program with programming languages"
+words=word_tokenize(sentence)
+for w in words:
+    print(w,":",ps.stem(w)) 
+  </textarea>
+  <button onclick="copyToClipboard(document.getElementById('textbox8'))">Copy</button>
+    <br>
+  </div>
+	
+    <!------------------------------------------------------ -->
+  <div>
+        <P><<h2>Parts of Speech tagging</h2>
+  <textarea id="textbox9" rows="25" cols="100">
+import nltk
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize,sent_tokenize
+stop_words=set(stopwords.words('english'))
+
+txt="Sukanya,Rajib and Naba are my good friends."\
+    "Sukanya is getting married next year."\
+    "Marriage is a big step in one's life."\
+    "It is both exciting and frightening."\
+    "But friendship is a sacrwed bond between people."\
+    "It is a special kind of love between us."\
+    "Many of you must have tried searching for a friend"\
+    "But never found the right one."
+tokenized=sent_tokenize(txt)
+for i in tokenized:
+    wordsList=nltk.word_tokenize(i)
+    wordList=[w for w in wordsList if not w in stop_words]
+    tagged=nltk.pos_tag(wordsList)
+    print(tagged) 
+  </textarea>
+  <button onclick="copyToClipboard(document.getElementById('textbox9'))">Copy</button>
+    <br>
+  </div>
 </body>
 </html>
