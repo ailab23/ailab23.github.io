@@ -2,17 +2,17 @@
 <html>
 <head>
   <script>
-    function copyText() {
-      var text = document.getElementById("text-box");
-      text.select();
-      document.execCommand("copy");
-    }
+    function copyToClipboard(textbox) {
+        textbox.select();
+        document.execCommand("copy");
+        alert("Copied the text: " + textbox.value);
+      }
   </script>
 </head>
 <body>
     <div>
         <P><<h2>BFS</h2>
-  <textarea id="text-box" rows="25" cols="100">
+  <textarea id="textbox1" rows="25" cols="100">
 graph = {
   '5' : ['3','7'],
   '3' : ['2', '4','5'],
@@ -36,13 +36,13 @@ def bfs(visited, graph, node):
 print("Following is the Breadth-First Search")
 bfs(visited, graph, '5')
   </textarea>
-  <br>
-  <button onclick="copyText()">Copy</button>
+  <button onclick="copyToClipboard(document.getElementById('textbox1'))">Copy</button>
+    <br>
   </div>
 <!------------------------------------------------------ -->
   <div>
         <P><<h2>DFS</h2>
-  <textarea id="text-box" rows="25" cols="100">
+  <textarea id="textbox2" rows="25" cols="100">
 graph = {
   '5' : ['3','7'],
   '3' : ['2', '4'],
@@ -61,14 +61,14 @@ def dfs(visited, graph, node):
 print("Following is the Depth-First Search")
 dfs(visited, graph, '5')
   </textarea>
-  <br>
-  <button onclick="copyText()">Copy</button>
+  <button onclick="copyToClipboard(document.getElementById('textbox1'))">Copy</button>
+    <br>
   </div>
 
   <!------------------------------------------------------ -->
   <div>
         <P><<h2> greedy BFS</h2>
-  <textarea id="text-box" rows="25" cols="100">
+  <textarea id="textbox3" rows="25" cols="100">
 SuccList ={'A':[['B',3],['C',2]], 
            'B':[['A',5],['C',2],['D',2],['E',3]], 
            'C':[['A',5],['B',3],['F',2],['G',4]], 
@@ -143,14 +143,14 @@ def BestFirstSearch():
 result=BestFirstSearch() #call search algorithm
 print(Closed,result)
   </textarea>
-  <br>
-  <button onclick="copyText()">Copy</button>
+  <button onclick="copyToClipboard(document.getElementById('textbox1'))">Copy</button>
+    <br>
   </div>
 
 <!------------------------------------------------------ -->
   <div>
         <P><<h2>A star</h2>
-  <textarea id="text-box" rows="25" cols="100">
+  <textarea id="textbox4" rows="25" cols="100">
 from queue import heappop,heappush
 from math import inf
 class Graph:
@@ -216,8 +216,8 @@ traced_path,cost=graph.a_star_search(start,goal)
 if(traced_path):print('Path:',end='');Graph.print_path(traced_path,goal);
 print('\nCost:',cost)
   </textarea>
-  <br>
-  <button onclick="copyText()">Copy</button>
+  <button onclick="copyToClipboard(document.getElementById('textbox1'))">Copy</button>
+    <br>
   </div>
 </body>
 </html>
