@@ -5,7 +5,6 @@
     function copyToClipboard(textbox) {
         textbox.select();
         document.execCommand("copy");
-        alert("Copied the text: " + textbox.value);
       }
   </script>
 </head>
@@ -217,6 +216,89 @@ if(traced_path):print('Path:',end='');Graph.print_path(traced_path,goal);
 print('\nCost:',cost)
   </textarea>
   <button onclick="copyToClipboard(document.getElementById('textbox4'))">Copy</button>
+    <br>
+  </div>
+	
+ <!------------------------------------------------------ -->
+  <div>
+        <P><<h2>decision tree</h2>
+  <textarea id="textbox5" rows="25" cols="100">
+import sys
+import matplotlib
+#matplotlib.use('Agg')
+import pandas
+from sklearn import tree
+from sklearn.tree import DecisionTreeClassifier
+import matplotlib.pyplot as plt
+
+import os
+os.chdir("C:\\Users\\admin-15\\Desktop")
+
+df=pandas.read_csv("data.csv")
+d={'UK':0,'USA':1,'N':2}
+df['Nationality']=df['Nationality'].map(d)
+d={'YES':1,'NO':0}
+df['Go']=df['Go'].map(d)
+features=['Age','Experience','Rank','Nationality']
+X=df[features]
+y=df['Go']
+dtree=DecisionTreeClassifier()
+dtree=dtree.fit(X,y)
+tree.plot_tree(dtree,feature_names=features)
+plt.show()
+
+#plt.savefig(sys.stdout.buffer)
+#sys.stdout.flush() 
+  </textarea>
+  <button onclick="copyToClipboard(document.getElementById('textbox5'))">Copy</button>
+    <br>
+  </div>
+	
+<!------------------------------------------------------ -->
+  <div>
+        <P><<h2>MLFFN</h2>
+  <textarea id="textbox6" rows="25" cols="100">
+import numpy as np
+
+class NeuralNetwork():
+    def __init__(self):
+        np.random.seed(1)
+        self.synaptic_weights = 2*np.random.random((3,1))-1
+    def sigmoid(self,x):
+        return 1/(1+np.exp(-x))
+    def sigmoid_derivative(self,x):
+        return x*(1-x)
+    def train(self,training_input,training_output,training_iterations):
+        for iteration in range(training_iterations):
+            output = self.think(training_inputs)
+            error = training_output-output
+            adjustment = np.dot(training_input.T,error*self.sigmoid_derivative(output))
+            self.synaptic_weights += adjustment
+    def think(self,inputs):
+        inputs = inputs.astype(float)
+        output = self.sigmoid(np.dot(inputs,self.synaptic_weights))
+        return output
+if __name__=="__main__":
+        neural_network = NeuralNetwork()
+        print("Beginning Randomly Generated Weights:")
+        print(neural_network.synaptic_weights)
+        training_inputs = np.array([[0,0,1],
+                                    [1,1,1],
+                                    [1,0,1],
+                                    [0,1,1]])
+        training_outputs = np.array([[0,1,1,0]]).T
+        neural_network.train(training_inputs,training_outputs,15000)
+        print("Ending Weights After Training:")
+        print(neural_network.synaptic_weights)
+        user_input_one = str(input("User Input One:"))
+        user_input_two = str(input("User Input Two:"))
+        user_input_three = str(input("User Input Three:"))
+        print("Considering New Situation:",([user_input_one, user_input_two,user_input_three]))
+        print("New Output data:")
+        print(neural_network.think(np.array([user_input_one, user_input_two,user_input_three])))
+        print("Wow,we did it!") 
+  </textarea>
+  <button onclick="copyToClipboard(document.getElementById('textbox6'))">Copy</button>
     <br>
   </div>
 </body>
